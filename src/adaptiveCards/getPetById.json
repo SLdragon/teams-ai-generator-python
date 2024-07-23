@@ -10,12 +10,17 @@
     },
     {
       "type": "TextBlock",
+      "text": "status: ${status}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
       "text": "array index expression: ${photoUrls[0]}",
       "wrap": true
     },
     {
       "type": "TextBlock",
-      "text": "unsupported expression: ${add('hello','world')}",
+      "text": "unsupported expression should keep unchanged: ${add('hello','world')}",
       "wrap": true
     },
     {
@@ -25,12 +30,12 @@
     },
     {
       "type": "TextBlock",
-      "text": "name with if condition support: ${ if (name, name, 'N/A' ) }",
+      "text": "name with if condition support: ${if(name, name, 'N/A' )}",
       "wrap": true
     },
     {
       "type": "TextBlock",
-      "text": "category.id with space around: ${  category.id  }",
+      "text": "category.id with space around: ${  category.  id  }",
       "wrap": true
     },
     {
@@ -40,12 +45,12 @@
     },
     {
       "type": "TextBlock",
-      "text": "plain_str_test: ${'plain_str contain spaces'}",
+      "text": "plain string test: ${'plain string contain spaces'}",
       "wrap": true
     },
     {
       "type": "TextBlock",
-      "text": "photoUrls jsonStringify test: ${ jsonStringify (photoUrls)}"
+      "text": "photoUrls jsonStringify test: ${jsonStringify(photoUrls)}"
     },
     {
       "type": "Container",
@@ -53,13 +58,8 @@
       "items": [
         {
           "type": "TextBlock",
-          "text": "photoUrls container test: ${$data  } ${  $root.  name }",
+          "text": "string array container test: ${$data}",
           "wrap": true
-        },
-        {
-          "type": "Image",
-          "url": "${$data}",
-          "$when": "${$data != null && $data != ''  }"
         }
       ]
     },
@@ -68,12 +68,12 @@
       "items": [
         {
           "type": "TextBlock",
-          "text": "test container without $data 1",
+          "text": "test container without data 1",
           "wrap": true
         },
         {
           "type": "TextBlock",
-          "text": "test container without $data 2",
+          "text": "test container without data 2",
           "wrap": true
         }
       ]
@@ -84,7 +84,7 @@
       "items": [
         {
           "type": "TextBlock",
-          "text": "tags.id and root: ${id} ${$root.status}",
+          "text": "access root from container: ${id} ${$root.status}",
           "wrap": true
         },
         {
@@ -94,20 +94,16 @@
         }
       ]
     },
+
     {
-      "type": "TextBlock",
-      "text": "status: ${status}",
-      "wrap": true
+      "type": "Image",
+      "url": "https://placehold.co/600x400",
+      "$when": "${noneexistedproperty != null && noneexistedproperty != ''}"
     },
     {
       "type": "Image",
       "url": "https://placehold.co/600x400",
-      "$when": "${noneexistedproperty != null && noneexistedproperty != ''  }"
-    },
-    {
-      "type": "Image",
-      "url": "https://placehold.co/600x400",
-      "$when": "${id != null && id != ''  }"
+      "$when": "${id != null && id != ''}"
     }
   ]
 }
